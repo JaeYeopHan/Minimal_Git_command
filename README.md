@@ -1,5 +1,8 @@
 # All_about_Git_command
-This is a repository of useful commands for using Git.
+Git을 사용하면서 자주 사용하는 명령어들에 대해 정리한 repository입니다.
+
+</br>
+
 ## Basic
 #### branch 생성하기
 ```
@@ -23,10 +26,16 @@ git log
 
 ---
 
+</br>
+
 ## Useful command
 #### commit 한 개 취소하기
 ```
 git reset HEAD^
+```
+or
+```
+git revert HEAD
 ```
 
 #### commit message 수정하기
@@ -75,7 +84,11 @@ git log --graph
 git reflog
 ```
 
+</br>
+
 ---
+
+</br>
 
 ## 상황에 따른 git command 집합
 ### 상황 1. conflict가 발생하는 상황
@@ -100,10 +113,14 @@ git rebase --continue
 git push -f origin [YOUR_WORKING_BRANCH_NAME]
 ```
 
+</br>
+
 ---
 
+</br>
+
 ## 알아두면 쓸모있는 Git Tip
-`Git`을 설치한 `HOME` 디렉토리에는 `.gitconfig` 파일이 존재한다. 이 파일에서 자주 사용하는 명령어에 대해서 alias를 지정해줄 수 있다.
+`Git`을 설치한 디렉토리에는 `.gitconfig` 파일이 존재한다. 이 파일에서 자주 사용하는 명령어에 대해서 alias를 지정해줄 수 있다.
 ``` .gitconfig
 [alias]
     g = git
