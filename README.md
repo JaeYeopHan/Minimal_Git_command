@@ -66,12 +66,12 @@ git update-index --assume-unchanged [파일명]
 
 #### 파일의 변경 이력을 무시해서 stage에서 임시로 제외한 상황을 되돌리기
 ```
-git update-index --no-assume-unchanged 파일명
+git update-index --no-assume-unchanged [파일명]
 ```
 
 #### 특정 branch 생성하며 remote에 push하기
 ```
-git push origin feature-LINEREDIS-640-3
+git push origin [branch name]
 ```
 
 #### git log graph로 출력하기
