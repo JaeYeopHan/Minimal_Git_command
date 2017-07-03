@@ -1,4 +1,4 @@
-# All_about_Git_command
+# Minimal_Git_command
 Git을 사용하면서 자주 사용하는 명령어들에 대해 정리한 repository입니다.
 
 </br>
@@ -84,6 +84,12 @@ git log --graph
 git reflog
 ```
 
+#### 바로 이전 commit에 새로운 파일 변경 사항을 추가한다.
+```
+git commit -C HEAD --amend
+```
+_cf> 만약 push를 한 상태라면 `-f`옵션을 통해서 push를 해줘야 한다. commit을 새로 생성하지 않고 변경사항을 추가하는 것처럼 보이지만 내부적으로는 새로운 커밋이 생기는 것이기 때문에 push된 commit과 다른 commit이다._
+
 </br>
 
 ---
@@ -114,6 +120,20 @@ git push -f origin [YOUR_WORKING_BRANCH_NAME]
 ```
 
 </br>
+
+### 상황 2. 과거 commit에 fix한 commit이 존재하여 이 commit 순서를 정렬하고 싶은 상황
+어떤 commit이 이미 올라갔는데 그 commit에 해당하는 수정 사항이 발생하면 그에 해당하는 fix commit을 추가할 경우가 있다. 이 때, commit의 순서가 난잡해지는데 이 경우,`fixup`과 `autosquash` command를 사용한다.
+```
+git commit --fixup [HASH]
+```
+이렇게 해서 해당 fix commit을 추가해놓은 다음에
+```
+git rebase -i --autosquash [HASH]
+```
+위 명령어를 통해서 squash 해주면 커밋 순서도 정렬되면서 하나의 commit으로 squash된다. 위 명령어에서 `HASH`란 어느 커밋부터 squash를 할 것인가를 의미한다.
+
+_cf> fixup과 squash 그리고 squeeze의 차이점_  
+`squash`는 새로운 인터페이스가 열리면서 commit message도 수정(포함 또는 배제)할 수 있다. `fixup`은 commit message를 `pick`한 commit에 대해서만 적용한다. `squeeze`는 squash하고자 하는 모든 commit message를 포함하면서 squash한다.
 
 ---
 
