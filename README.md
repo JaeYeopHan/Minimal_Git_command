@@ -4,9 +4,34 @@ Git을 사용하면서 자주 사용하는 명령어들에 대해 정리한 repo
 </br>
 
 ## Basic
-#### branch 생성하기
+#### add
 ```
-git checkout -b [branch name]
+git add [file name]
+```
+
+#### 변경 사항이 있는 모든 파일 add
+```
+git add .
+```
+
+#### commit message와 commit
+```
+git commit -m "[commit message]"
+```
+
+#### 변경 사항이 있는 모든 파일 add와 동시에 commit
+```
+git commit -am "[commit message]"
+```
+
+#### remote repository 등록하기
+```
+git remote add [remote github repository address]
+```
+
+#### 특정 branch 생성하며 remote에 push하기
+```
+git push origin [branch name]
 ```
 
 #### branch 간 이동하기
@@ -14,7 +39,17 @@ git checkout -b [branch name]
 git checkout [branch name]
 ```
 
-#### 변경사항 확인하기
+#### branch 생성하기
+```
+git checkout -b [branch name]
+```
+
+#### branch 이름 바꾸기
+```
+git branch -M [changed name]
+```
+
+#### 이전 commit과 비교하여 파일 변경 사항 확인하기
 ```
 git diff
 ```
@@ -24,11 +59,21 @@ git diff
 git log
 ```
 
+#### git log graph로 출력하기
+```
+git log --graph
+```
+
 ---
 
 </br>
 
 ## Useful command
+#### 변경 사항이 있는 파일 변경 사항 취소하기
+```
+git checkout -- [file name]
+```
+
 #### commit 한 개 취소하기
 ```
 git reset HEAD^
@@ -38,9 +83,19 @@ or
 git revert HEAD
 ```
 
-#### commit message 수정하기
+#### 바로 이전 commit message 수정하기
 ```
 git commit --amend
+```
+
+#### local git repository에 remote repository을 upstream으로 등록하기
+```
+git remote add --track master upstream [remote github repository address]
+```
+
+#### master branch를 uptream의 latest version으로 update시키기
+```
+git pull --ff upstream master
 ```
 
 #### 여러 commit을 하나로 합치기(squash)
@@ -49,15 +104,16 @@ git rebase -i HEAD~[commit 개수]
 ```
 `.gitconfig`에서 설정해둔 editor 창이 나타난다. 기준이 될 맨 위의 한 commit만 `pick`으로 두고 나머지는 `squash`라는 명령어로 바꿔준다. `:wq` 명령어를 통해 저장하고 종료한다. 그러면 또 다른 editor 창이 나타나는데, commit message를 설정하는 editor이다. 원하는 commit message를 입력하고 `:wq` 명령어를 통해 저장하고 종료해주면 squash 가 된다.
 
-#### local git repository에 remote repository 등록하기
+#### git history 출력하기
 ```
-git remote add —track master upstream [remote github repository address]
+git reflog
 ```
 
-#### master branch를 uptream의 latest version으로 update시키기
+#### 바로 이전 commit에 새로운 파일 변경 사항을 추가하기
 ```
-git pull --ff upstream master
+git commit -C HEAD --amend
 ```
+_cf> 만약 push를 한 상태라면 `-f`옵션을 통해서 push를 해줘야 한다. commit을 새로 생성하지 않고 변경사항을 추가하는 것처럼 보이지만 내부적으로는 새로운 커밋이 생기는 것이기 때문에 push된 commit과 다른 commit이다._
 
 #### 파일의 변경 이력을 무시해서 stage에서 임시로 제외하기
 ```
@@ -69,27 +125,6 @@ git update-index --assume-unchanged [파일명]
 git update-index --no-assume-unchanged [파일명]
 ```
 
-#### 특정 branch 생성하며 remote에 push하기
-```
-git push origin [branch name]
-```
-
-#### git log graph로 출력하기
-```
-git log --graph
-```
-
-#### git history 출력하기
-```
-git reflog
-```
-
-#### 바로 이전 commit에 새로운 파일 변경 사항을 추가한다.
-```
-git commit -C HEAD --amend
-```
-_cf> 만약 push를 한 상태라면 `-f`옵션을 통해서 push를 해줘야 한다. commit을 새로 생성하지 않고 변경사항을 추가하는 것처럼 보이지만 내부적으로는 새로운 커밋이 생기는 것이기 때문에 push된 commit과 다른 commit이다._
-
 </br>
 
 ---
@@ -98,6 +133,7 @@ _cf> 만약 push를 한 상태라면 `-f`옵션을 통해서 push를 해줘야 �
 
 ## 상황에 따른 git command 집합
 ### 상황 1. conflict가 발생하는 상황
+여러 가지 방법이 있지만 그 중 두 가지.
 ```
 git merge upstream/master
 (resolve conflict in editor)
