@@ -90,6 +90,12 @@ git stash
 git stash pop
 ```
 
+#### 다른 branch 의 특정 commit 가져와서 merge 하기
+
+```
+git cherry-pick [COMMIT_HASH_NUMBER]
+```
+
 ---
 
 </br>
