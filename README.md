@@ -78,24 +78,6 @@ git log
 git log --graph
 ```
 
-#### 현재 branch 에서 변경 사항 커밋없이 저장해두기
-
-```
-git stash
-```
-
-#### 저장해두었던 변경 내역 불러오기
-
-```
-git stash pop
-```
-
-#### 다른 branch 의 특정 commit 가져와서 merge 하기
-
-```
-git cherry-pick [COMMIT_HASH_NUMBER]
-```
-
 ---
 
 </br>
@@ -170,6 +152,24 @@ git update-index --assume-unchanged [파일명]
 
 ```
 git update-index --no-assume-unchanged [파일명]
+```
+
+#### 현재 branch 에서 변경 사항 커밋없이 저장해두기
+
+```
+git stash
+```
+
+#### 저장해두었던 변경 내역 불러오기
+
+```
+git stash pop
+```
+
+#### 다른 branch 의 특정 commit 가져와서 merge 하기
+
+```
+git cherry-pick [COMMIT_HASH_NUMBER]
 ```
 
 </br>
