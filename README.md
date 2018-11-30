@@ -172,6 +172,12 @@ git stash pop
 git cherry-pick [COMMIT_HASH_NUMBER]
 ```
 
+#### upstream 제거하기
+
+```
+git branch --unset-upstream
+```
+
 </br>
 
 ---
